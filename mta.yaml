@@ -1,0 +1,32 @@
+ID: fioridemoneo
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: ui
+   type: html5
+   path: ui
+   parameters:
+      disk-quota: 512M
+      memory: 256M
+      version: 0.0.1
+   build-parameters:
+      builder: grunt
+   requires:
+    - name: uaa_fioridemoneo
+    - name: dest_fioridemoneo
+
+resources:
+ - name: uaa_fioridemoneo
+   parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+   type: org.cloudfoundry.managed-service
+
+ - name: dest_fioridemoneo
+   parameters:
+      service-plan: lite
+      service: destination
+   type: org.cloudfoundry.managed-service
+
